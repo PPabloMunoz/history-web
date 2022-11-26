@@ -1,4 +1,4 @@
-import Head from 'next/head'
+// import Head from 'next/head'
 import Image from 'next/image'
 
 import Navbar from './components/Navbar'
@@ -11,7 +11,7 @@ import Link from 'next/link'
 export default function Home({ objects1 }) {
   return (
     <div>
-      <Head>
+      {/* <Head>
         <title>Historia 2º BACH</title>
         <meta name='viewport' content='width=device-width, initial-scale=1.0' />
         <meta
@@ -19,7 +19,7 @@ export default function Home({ objects1 }) {
           content='Historia 2º bach con cronologia, vocabulario y ejercicios para practicar'
         />
         <link rel='icon' href='/PM.svg' />
-      </Head>
+      </Head> */}
 
       <Navbar page='home' />
 
