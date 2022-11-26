@@ -1,0 +1,22 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.dv"
+}
+
+model firstBlock {
+  id         Int    @id @default(autoincrement())
+  name       String
+  year       String
+  definition String
+}
+
+model secondBlock {
+  id         Int    @id @default(autoincrement())
+  name       String
+  year       String
+  definition String
+}
