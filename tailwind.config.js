@@ -5,7 +5,11 @@ module.exports = {
     './node_modules/flowbite-react/**/*.js'
   ],
   theme: {
+    fontFamily: {
+      sans: ['Patrick Hand', 'Oswald', 'ui-sans-serif', 'system-ui']
+    },
     extend: {}
   },
-  plugins: [require('daisyui')]
+  darkMode: 'class',
+  plugins: [require('@tailwindcss/typography'), require('daisyui')]
 }

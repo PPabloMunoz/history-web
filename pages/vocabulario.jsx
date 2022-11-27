@@ -20,11 +20,11 @@ export default function Vocabulario({ objects1, objects2 }) {
   return (
     <>
       <Navbar page='vocabulario' />
-      <h2 className='text-center my-7 uppercase font-bold text-3xl px-5'>
+      <h2 className='text-center my-7 uppercase font-bold text-3xl px-5 text-gray-800 dark:text-inherit'>
         Vocabulario
       </h2>
 
-      <main className='px-7 py-5 flex flex-col w-full lg:flex-row'>
+      <main className='px-7 py-5 flex flex-col w-full lg:flex-row text-gray-800 dark:text-inherit'>
         <div className='pb-10 lg:w-[49%]'>
           <h3 className='text-xl underline'>Bloque 1 y 2</h3>
           <div className='my-6 form-control'>
@@ -32,7 +32,7 @@ export default function Vocabulario({ objects1, objects2 }) {
               <input
                 type='text'
                 placeholder='Buscar...'
-                className='input input-bordered w-full rounded-lg'
+                className='input input-bordered w-full rounded-lg bg-gray-200 dark:bg-[#2A303C] placeholder:text-gray-800 dark:placeholder:text-inherit'
                 onChange={(e) => updateQuery(e.target.value)}
               />
             </div>
@@ -61,7 +61,7 @@ export default function Vocabulario({ objects1, objects2 }) {
               <input
                 type='text'
                 placeholder='Buscar...'
-                className='input input-bordered w-full rounded-lg'
+                className='input input-bordered w-full rounded-lg bg-gray-200 dark:bg-[#2A303C] placeholder:text-gray-800 dark:placeholder:text-inherit'
                 onChange={(e) => updateQuery2(e.target.value)}
               />
             </div>

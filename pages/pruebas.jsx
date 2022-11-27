@@ -50,11 +50,11 @@ export default function Bloque1_2({ objects1, objects2 }) {
   return (
     <>
       <Navbar page='pruebas' />
-      <h2 className='text-center my-7 uppercase font-bold text-3xl px-5'>
+      <h2 className='text-center my-7 uppercase font-bold text-3xl px-5 text-gray-900 dark:text-inherit'>
         Pruebas
       </h2>
 
-      <main className='px-7 grid grid-cols-2 gap-10'>
+      <main className='px-7 grid grid-cols-2 gap-10 text-gray-800 dark:text-inherit'>
         <div>
           <h3 className='text-center underline pb-5 text-xl'>Bloque 1 y 2</h3>
           <div className='flex flex-col gap-2 pb-9'>
@@ -62,7 +62,7 @@ export default function Bloque1_2({ objects1, objects2 }) {
               return (
                 <p
                   key={e.id}
-                  className='bg-gray-700 px-4 py-2 rounded-sm text-white'
+                  className='bg-gray-300 dark:bg-gray-700 px-4 py-2 rounded-sm dark:text-white'
                 >
                   {e.name}
                 </p>
@@ -71,7 +71,7 @@ export default function Bloque1_2({ objects1, objects2 }) {
           </div>
           <button
             type='btn'
-            className='btn btn-primary w-full'
+            className='btn btn-primary w-full bg-[#865ad1] dark:bg-primary'
             onClick={() => {
               updateFirst(aleatory(objects1))
             }}
@@ -87,7 +87,7 @@ export default function Bloque1_2({ objects1, objects2 }) {
               return (
                 <p
                   key={e.id}
-                  className='bg-gray-700 px-4 py-2 rounded-sm text-white'
+                  className='bg-gray-300 dark:bg-gray-700 px-4 py-2 rounded-sm dark:text-white'
                 >
                   {e.name}
                 </p>
@@ -96,7 +96,7 @@ export default function Bloque1_2({ objects1, objects2 }) {
           </div>
           <button
             type='btn'
-            className='btn btn-primary w-full'
+            className='btn btn-primary w-full bg-[#865ad1] dark:bg-primary'
             onClick={() => {
               updateSecond(aleatory(objects2))
             }}

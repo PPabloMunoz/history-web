@@ -17,13 +17,15 @@ export default function Cronologia({ objects1, objects2 }) {
   return (
     <>
       <Navbar page='cronologia' />
-      <h2 className='text-center my-7 uppercase font-bold text-3xl px-5'>
+      <h2 className='text-center my-7 uppercase font-bold text-3xl px-5 text-gray-800 dark:text-inherit'>
         Cronología
       </h2>
 
       <main className='px-7 pb-10 grid grid-cols-1 lg:grid-cols-2 gap-5'>
         <div className='overflow-x-auto'>
-          <h3 className='text-center mb-3 underline'>Bloques 1 y 2</h3>
+          <h3 className='text-center text-xl mb-3 underline text-gray-800 dark:text-inherit'>
+            Bloques 1 y 2
+          </h3>
           <table className='table w-full table-zebra table-compact'>
             {/* <!-- head --> */}
             <thead>
@@ -49,7 +51,9 @@ export default function Cronologia({ objects1, objects2 }) {
         </div>
         {/* Bloque 3 y 4 */}
         <div className='overflow-x-auto'>
-          <h3 className='text-center mb-3 underline'>Bloques 3 y 4</h3>
+          <h3 className='text-center text-xl mb-3 underline text-gray-800 dark:text-inherit'>
+            Bloques 3 y 4
+          </h3>
           <table className='table w-full table-zebra table-compact'>
             {/* <!-- head --> */}
             <thead>

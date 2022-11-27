@@ -3,7 +3,7 @@ import Link from 'next/link'
 export default function Navbar({ page }) {
   return (
     <>
-      <nav className='navbar bg-[#282A3A] justify-around text-white'>
+      <nav className='navbar bg-gray-300 dark:bg-[#282A3A] justify-around text-gray-800 dark:text-white'>
         <div className='navbar-start w-full lg:w-auto'>
           <div className='dropdown'>
             <label tabIndex={0} className='btn btn-ghost lg:hidden'>
