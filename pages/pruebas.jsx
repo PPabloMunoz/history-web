@@ -14,11 +14,11 @@ export async function getStaticProps() {
   }
 }
 
-function aleatory(data) {
+function aleatory(data, iterations) {
   const random = []
   let temp = data
 
-  for (let i = 0; i < 8; i++) {
+  for (let i = 0; i < iterations; i++) {
     let rand = Math.floor(Math.random() * temp.length)
     let rValue = temp[rand]
 
@@ -28,10 +28,13 @@ function aleatory(data) {
     }
     random.push(rValue)
 
-    temp = temp.filter((e) => e !== rValue)
+    temp = temp.filter((e) => {
+      return e !== rValue
+    })
   }
 
   // console.log(random, 'random')
+  // console.log(temp, 'temp')
 
   return random
 }
@@ -39,11 +42,12 @@ function aleatory(data) {
 export default function Bloque1_2({ objects1, objects2 }) {
   const [firstBlock, updateFirst] = useState([])
   const [secondBlock, updateSecond] = useState([])
+  const [num, updateNum] = useState(7)
 
   useEffect(() => {
-    updateFirst(aleatory(objects1))
-    updateSecond(aleatory(objects2))
-  }, [])
+    updateFirst(aleatory(objects1, num))
+    updateSecond(aleatory(objects2, num))
+  }, [num])
 
   // console.log(firstBlock, 'first')
 
@@ -54,7 +58,19 @@ export default function Bloque1_2({ objects1, objects2 }) {
         Pruebas
       </h2>
 
-      <main className='px-7 grid grid-cols-2 gap-10 text-gray-800 dark:text-inherit'>
+      <div className='mx-24 mb-10'>
+        <p>Numero de palabras: {num}</p>
+        <input
+          type='range'
+          min='0'
+          max={objects1.length - 3}
+          defaultValue='7'
+          className='range range-xs lg:range-sm my-3'
+          onChange={(e) => updateNum(e.target.value)}
+        />
+      </div>
+
+      <main className='px-7 pb-7 grid grid-cols-2 gap-10 text-gray-800 dark:text-inherit'>
         <div>
           <h3 className='text-center underline pb-5 text-xl'>Bloque 1 y 2</h3>
           <div className='flex flex-col gap-2 pb-9'>
@@ -73,7 +89,7 @@ export default function Bloque1_2({ objects1, objects2 }) {
             type='btn'
             className='btn btn-primary w-full bg-[#865ad1] dark:bg-primary'
             onClick={() => {
-              updateFirst(aleatory(objects1))
+              updateFirst(aleatory(objects1, num))
             }}
           >
             Resetear
@@ -98,7 +114,7 @@ export default function Bloque1_2({ objects1, objects2 }) {
             type='btn'
             className='btn btn-primary w-full bg-[#865ad1] dark:bg-primary'
             onClick={() => {
-              updateSecond(aleatory(objects2))
+              updateSecond(aleatory(objects2, num))
             }}
           >
             Resetear
