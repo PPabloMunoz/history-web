@@ -47,7 +47,7 @@ export default function Bloque1_2({ objects1, objects2 }) {
   useEffect(() => {
     updateFirst(aleatory(objects1, num))
     updateSecond(aleatory(objects2, num))
-  }, [num])
+  }, [num, objects1, objects2])
 
   // console.log(firstBlock, 'first')
 
