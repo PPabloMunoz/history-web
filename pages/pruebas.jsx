@@ -1,6 +1,7 @@
 import { PrismaClient } from '@prisma/client'
 
 import { useState, useEffect } from 'react'
+import { Reorder } from 'framer-motion'
 import Navbar from './components/Navbar'
 
 const prisma = new PrismaClient()
@@ -8,6 +9,19 @@ const prisma = new PrismaClient()
 export async function getStaticProps() {
   const objects1 = await prisma.firstBlock.findMany()
   const objects2 = await prisma.secondBlock.findMany()
+
+  console.log(objects1)
+  console.log(objects2)
+
+  for (let i = 0; i < 19; i++) {
+    objects1[i] = objects1[i].name
+  }
+
+  for (let i = 0; i < 16; i++) {
+    objects2[i] = objects2[i].name
+  }
+
+  // console.log(objects2)
 
   return {
     props: { objects1, objects2 }
@@ -33,7 +47,7 @@ function aleatory(data, iterations) {
     })
   }
 
-  // console.log(random, 'random')
+  console.log(random, 'random')
   // console.log(temp, 'temp')
 
   return random
@@ -49,7 +63,8 @@ export default function Bloque1_2({ objects1, objects2 }) {
     updateSecond(aleatory(objects2, num))
   }, [num, objects1, objects2])
 
-  // console.log(firstBlock, 'first')
+  console.log(firstBlock, 'first')
+  console.log(secondBlock, 'second')
 
   return (
     <>
@@ -74,16 +89,33 @@ export default function Bloque1_2({ objects1, objects2 }) {
         <div>
           <h3 className='text-center underline pb-5 text-xl'>Bloque 1 y 2</h3>
           <div className='flex flex-col gap-2 pb-9'>
-            {firstBlock.map((e) => {
+            <Reorder.Group
+              axis='y'
+              values={firstBlock}
+              onReorder={updateFirst}
+              className='py-2'
+            >
+              {firstBlock.map((item) => (
+                <Reorder.Item
+                  key={item}
+                  value={item}
+                  className='bg-gray-300 dark:bg-gray-700 px-4 py-2 rounded-sm dark:text-white my-2'
+                >
+                  {item}
+                </Reorder.Item>
+              ))}
+            </Reorder.Group>
+
+            {/* {firstBlock.map((e) => {
               return (
                 <p
-                  key={e.id}
+                  key={e}
                   className='bg-gray-300 dark:bg-gray-700 px-4 py-2 rounded-sm dark:text-white'
                 >
-                  {e.name}
+                  {e}
                 </p>
               )
-            })}
+            })} */}
           </div>
           <button
             type='btn'
@@ -94,6 +126,22 @@ export default function Bloque1_2({ objects1, objects2 }) {
           >
             Resetear
           </button>
+          <div className='collapse'>
+            <input type='checkbox' />
+            <div className='collapse-title text-xl font-medium'>Solution</div>
+            <div className='collapse-content'>
+              {objects1.map((item) => {
+                return (
+                  <p
+                    key={item}
+                    className='bg-gray-300 dark:bg-gray-700 px-4 py-2 rounded-sm dark:text-white my-2'
+                  >
+                    {item}
+                  </p>
+                )
+              })}
+            </div>
+          </div>
         </div>
 
         <div>
@@ -102,10 +150,10 @@ export default function Bloque1_2({ objects1, objects2 }) {
             {secondBlock.map((e) => {
               return (
                 <p
-                  key={e.id}
+                  key={e}
                   className='bg-gray-300 dark:bg-gray-700 px-4 py-2 rounded-sm dark:text-white'
                 >
-                  {e.name}
+                  {e}
                 </p>
               )
             })}
