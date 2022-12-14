@@ -10,14 +10,14 @@ export async function getStaticProps() {
   const objects1 = await prisma.firstBlock.findMany()
   const objects2 = await prisma.secondBlock.findMany()
 
-  console.log(objects1)
-  console.log(objects2)
+  // console.log(objects1)
+  // console.log(objects2)
 
-  for (let i = 0; i < 19; i++) {
+  for (let i = 0; i < objects1.length; i++) {
     objects1[i] = objects1[i].name
   }
 
-  for (let i = 0; i < 16; i++) {
+  for (let i = 0; i < objects2.length; i++) {
     objects2[i] = objects2[i].name
   }
 
@@ -31,6 +31,7 @@ export async function getStaticProps() {
 function aleatory(data, iterations) {
   const random = []
   let temp = data
+  temp = temp.filter((item) => item !== undefined)
 
   for (let i = 0; i < iterations; i++) {
     let rand = Math.floor(Math.random() * temp.length)
@@ -47,13 +48,13 @@ function aleatory(data, iterations) {
     })
   }
 
-  console.log(random, 'random')
+  // console.log(random, 'random')
   // console.log(temp, 'temp')
 
   return random
 }
 
-export default function Bloque1_2({ objects1, objects2 }) {
+export default function Pruebas({ objects1, objects2 }) {
   const [firstBlock, updateFirst] = useState([])
   const [secondBlock, updateSecond] = useState([])
   const [num, updateNum] = useState(7)
@@ -63,8 +64,8 @@ export default function Bloque1_2({ objects1, objects2 }) {
     updateSecond(aleatory(objects2, num))
   }, [num, objects1, objects2])
 
-  console.log(firstBlock, 'first')
-  console.log(secondBlock, 'second')
+  console.log(firstBlock, 'f')
+  console.log(secondBlock, 's')
 
   return (
     <>
@@ -73,12 +74,13 @@ export default function Bloque1_2({ objects1, objects2 }) {
         Pruebas
       </h2>
 
+      {/* Rango */}
       <div className='mx-24 mb-10'>
         <p>Numero de palabras: {num}</p>
         <input
           type='range'
           min='0'
-          max={objects1.length - 3}
+          max={objects1.lengthf}
           defaultValue='7'
           className='range range-xs lg:range-sm my-3'
           onChange={(e) => updateNum(e.target.value)}
@@ -87,7 +89,7 @@ export default function Bloque1_2({ objects1, objects2 }) {
 
       <main className='px-7 pb-7 grid grid-cols-2 gap-10 text-gray-800 dark:text-inherit'>
         <div>
-          <h3 className='text-center underline pb-5 text-xl'>Bloque 1 y 2</h3>
+          <h3 className='text-center underline text-xl'>Bloque 1 y 2</h3>
           <div className='flex flex-col gap-2 pb-9'>
             <Reorder.Group
               axis='y'
@@ -105,17 +107,6 @@ export default function Bloque1_2({ objects1, objects2 }) {
                 </Reorder.Item>
               ))}
             </Reorder.Group>
-
-            {/* {firstBlock.map((e) => {
-              return (
-                <p
-                  key={e}
-                  className='bg-gray-300 dark:bg-gray-700 px-4 py-2 rounded-sm dark:text-white'
-                >
-                  {e}
-                </p>
-              )
-            })} */}
           </div>
           <button
             type='btn'
@@ -126,37 +117,49 @@ export default function Bloque1_2({ objects1, objects2 }) {
           >
             Resetear
           </button>
-          <div className='collapse'>
-            <input type='checkbox' />
-            <div className='collapse-title text-xl font-medium'>Solution</div>
-            <div className='collapse-content'>
-              {objects1.map((item) => {
-                return (
-                  <p
-                    key={item}
-                    className='bg-gray-300 dark:bg-gray-700 px-4 py-2 rounded-sm dark:text-white my-2'
-                  >
-                    {item}
-                  </p>
-                )
-              })}
-            </div>
-          </div>
+          {/* COMPROBAR */}
+          {/* <button
+            className='py-4 w-full text-center'
+            onClick={() => {
+              const temp = objects1
+              const notIncuded = []
+              const resultado = temp
+              for (let i = 0; i < temp.length; i++) {
+                if (!firstBlock.includes(temp[i])) {
+                  notIncuded.push(temp[i])
+                  console.log(notIncuded)
+                }
+              }
+              for (let i = 0; i < notIncuded.length; i++) {
+                resultado.filter((item) => item !== notIncuded[i])
+              }
+
+              console.log(resultado, 'resultado')
+            }}
+          >
+            Comprobar
+          </button> */}
         </div>
 
         <div>
-          <h3 className='text-center underline pb-5 text-xl'>Bloque 3 y 4</h3>
+          <h3 className='text-center underline text-xl'>Bloque 3 y 4</h3>
           <div className='flex flex-col gap-2 pb-9'>
-            {secondBlock.map((e) => {
-              return (
-                <p
-                  key={e}
-                  className='bg-gray-300 dark:bg-gray-700 px-4 py-2 rounded-sm dark:text-white'
+            <Reorder.Group
+              axis='y'
+              values={secondBlock}
+              onReorder={updateSecond}
+              className='py-2'
+            >
+              {secondBlock.map((item) => (
+                <Reorder.Item
+                  key={item}
+                  value={item}
+                  className='bg-gray-300 dark:bg-gray-700 px-4 py-2 rounded-sm dark:text-white my-2'
                 >
-                  {e}
-                </p>
-              )
-            })}
+                  {item}
+                </Reorder.Item>
+              ))}
+            </Reorder.Group>
           </div>
           <button
             type='btn'
