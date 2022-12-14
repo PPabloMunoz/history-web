@@ -80,7 +80,7 @@ export default function Pruebas({ objects1, objects2 }) {
         <input
           type='range'
           min='0'
-          max={objects1.lengthf}
+          max={objects1.length}
           defaultValue='7'
           className='range range-xs lg:range-sm my-3'
           onChange={(e) => updateNum(e.target.value)}
@@ -117,28 +117,6 @@ export default function Pruebas({ objects1, objects2 }) {
           >
             Resetear
           </button>
-          {/* COMPROBAR */}
-          {/* <button
-            className='py-4 w-full text-center'
-            onClick={() => {
-              const temp = objects1
-              const notIncuded = []
-              const resultado = temp
-              for (let i = 0; i < temp.length; i++) {
-                if (!firstBlock.includes(temp[i])) {
-                  notIncuded.push(temp[i])
-                  console.log(notIncuded)
-                }
-              }
-              for (let i = 0; i < notIncuded.length; i++) {
-                resultado.filter((item) => item !== notIncuded[i])
-              }
-
-              console.log(resultado, 'resultado')
-            }}
-          >
-            Comprobar
-          </button> */}
         </div>
 
         <div>
