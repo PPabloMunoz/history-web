@@ -10,15 +10,14 @@ async function main() {
   const find = await prisma.secondBlock.findMany()
   console.log(find)
 
-  // const create = await prisma.secondBlock.create({
-  //   data: {
-  //     name: 'Concilio de Trento',
-  //     year: '1545-1563',
-  //     definition:
-  //       'Concilio de la Iglesia católica, celebrado entre 1545 y 1563 en la ciudad italiana de Trento, convocado por el papa Pablo III. Fue la respuesta de la Iglesia Católica a la reforma protestante y sus conclusiones configuraron la actuación eclesial durante los tres siglos siguientes'
-  //   }
-  // })
-  // console.log(create)
+  const create = await prisma.secondBlock.create({
+    data: {
+      name: 'Canal de Castilla',
+      year: 'XVIII-XIX',
+      definition: ''
+    }
+  })
+  console.log(create)
 
   // const update = await prisma.firstBlock.update({
   //   where: {

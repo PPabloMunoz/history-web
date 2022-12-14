@@ -191,5 +191,40 @@ const secondBlock = [
     year: '1545-1563',
     definition:
       'Concilio de la Iglesia católica, celebrado entre 1545 y 1563 en la ciudad italiana de Trento, convocado por el papa Pablo III. Fue la respuesta de la Iglesia Católica a la reforma protestante y sus conclusiones configuraron la actuación eclesial durante los tres siglos siguientes'
+  },
+  {
+    name: 'Felipe V',
+    year: '1701-1746',
+    definition: ''
+  },
+  {
+    name: 'Tratado de Utretch',
+    year: '1713-1715',
+    definition: ''
+  },
+  {
+    name: 'Decretos de Nueva Planta',
+    year: '1707-1715-1716',
+    definition: ''
+  },
+  {
+    name: 'Carlos III',
+    year: '1759-1788',
+    definition: ''
+  },
+  {
+    name: 'Pactos de Familia',
+    year: '1733,1743,1761',
+    definition: ''
+  },
+  {
+    name: 'Jovellanos',
+    year: '1744-1811',
+    definition: ''
+  },
+  {
+    name: 'Canal de Castilla',
+    year: 'XVIII-XIX',
+    definition: ''
   }
 ]
