@@ -89,7 +89,16 @@ export default function Pruebas({ objects1, objects2 }) {
 
       <main className='px-7 pb-7 grid grid-cols-2 gap-10 text-gray-800 dark:text-inherit'>
         <div>
-          <h3 className='text-center underline text-xl'>Bloque 1 y 2</h3>
+          <h3 className='text-center underline text-xl mb-5'>Bloque 1 y 2</h3>
+          <button
+            type='btn'
+            className='btn btn-primary w-full bg-[#865ad1] dark:bg-primary'
+            onClick={() => {
+              updateFirst(aleatory(objects1, num))
+            }}
+          >
+            Resetear
+          </button>
           <div className='flex flex-col gap-2 pb-9'>
             <Reorder.Group
               axis='y'
@@ -108,19 +117,19 @@ export default function Pruebas({ objects1, objects2 }) {
               ))}
             </Reorder.Group>
           </div>
+        </div>
+
+        <div>
+          <h3 className='text-center underline text-xl mb-5'>Bloque 3 y 4</h3>
           <button
             type='btn'
             className='btn btn-primary w-full bg-[#865ad1] dark:bg-primary'
             onClick={() => {
-              updateFirst(aleatory(objects1, num))
+              updateSecond(aleatory(objects2, num))
             }}
           >
             Resetear
           </button>
-        </div>
-
-        <div>
-          <h3 className='text-center underline text-xl'>Bloque 3 y 4</h3>
           <div className='flex flex-col gap-2 pb-9'>
             <Reorder.Group
               axis='y'
@@ -139,15 +148,6 @@ export default function Pruebas({ objects1, objects2 }) {
               ))}
             </Reorder.Group>
           </div>
-          <button
-            type='btn'
-            className='btn btn-primary w-full bg-[#865ad1] dark:bg-primary'
-            onClick={() => {
-              updateSecond(aleatory(objects2, num))
-            }}
-          >
-            Resetear
-          </button>
         </div>
       </main>
     </>
