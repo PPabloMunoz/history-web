@@ -16,6 +16,7 @@ export async function getStaticProps() {
 export default function Vocabulario({ objects1, objects2 }) {
   const [query, updateQuery] = useState('')
   const [query2, updateQuery2] = useState('')
+  const [bloque, setBloque] = useState(1)
 
   return (
     <>
@@ -23,9 +24,27 @@ export default function Vocabulario({ objects1, objects2 }) {
       <h2 className='text-center my-7 uppercase font-bold text-3xl px-5 text-gray-800 dark:text-inherit'>
         Vocabulario
       </h2>
+      <div className='flex justify-around items-center text-xl'>
+        <h4
+          className={
+            bloque === 1 ? 'underline cursor-pointer' : 'cursor-pointer'
+          }
+          onClick={() => setBloque(1)}
+        >
+          Bloque 1 y 2
+        </h4>
+        <h4
+          className={
+            bloque === 2 ? 'underline cursor-pointer' : 'cursor-pointer'
+          }
+          onClick={() => setBloque(2)}
+        >
+          Bloque 3 y 4
+        </h4>
+      </div>
 
-      <main className='px-7 py-5 flex flex-col w-full lg:flex-row text-gray-800 dark:text-inherit'>
-        <div className='pb-10 lg:w-[49%]'>
+      <main className='px-5 py-5 flex flex-col w-full text-gray-800 dark:text-inherit'>
+        <div className='pb-10'>
           <h3 className='text-xl underline'>Bloque 1 y 2</h3>
           <div className='my-6 form-control'>
             <div className='justify-center items-center'>
@@ -52,9 +71,7 @@ export default function Vocabulario({ objects1, objects2 }) {
           </ul>
         </div>
 
-        <div className='divider lg:divider-horizontal' />
-
-        <div className='lg:w-[49%]'>
+        {/* <div className='lg:w-[49%]'>
           <h3 className='text-xl underline'>Bloque 3 y 4</h3>
           <div className='my-6 form-control'>
             <div className='justify-center items-center'>
@@ -78,7 +95,7 @@ export default function Vocabulario({ objects1, objects2 }) {
                 )
               })}
           </ul>
-        </div>
+        </div> */}
       </main>
     </>
   )
