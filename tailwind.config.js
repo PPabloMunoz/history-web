@@ -1,9 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    './pages/**/*.{js,ts,jsx,tsx}',
-    './node_modules/flowbite-react/**/*.js'
-  ],
+  content: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,jsx}'],
   theme: {
     fontFamily: {
       sans: ['Patrick Hand', 'Oswald', 'ui-sans-serif', 'system-ui']

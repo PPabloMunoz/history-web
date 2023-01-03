@@ -1,8 +1,19 @@
 import Link from 'next/link'
+import { useUserContext } from '../context/userContext'
+import { BsFillMoonFill, BsFillEmojiSunglassesFill } from 'react-icons/bs'
 
 export default function Navbar({ page }) {
+  const { dark, changeTheme } = useUserContext()
   return (
-    <>
+    <div>
+      {/* Dark and Light */}
+      <button onClick={changeTheme} className='absolute right-5 top-5 h-5'>
+        {dark ? (
+          <BsFillMoonFill size={25} />
+        ) : (
+          <BsFillEmojiSunglassesFill size={25} />
+        )}
+      </button>
       <nav className='navbar bg-gray-300 dark:bg-[#282A3A] justify-around text-gray-800 dark:text-white'>
         <div className='navbar-start w-full lg:w-auto'>
           <div className='dropdown'>
@@ -138,6 +149,6 @@ export default function Navbar({ page }) {
           </ul>
         </div>
       </nav>
-    </>
+    </div>
   )
 }

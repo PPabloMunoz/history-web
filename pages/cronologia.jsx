@@ -1,5 +1,6 @@
 import { PrismaClient } from '@prisma/client'
 import Navbar from '../components/Navbar'
+import { useUserContext } from '../context/userContext'
 
 const prisma = new PrismaClient()
 
@@ -13,9 +14,9 @@ export async function getStaticProps() {
 }
 
 export default function Cronologia({ objects1, objects2 }) {
-  // console.log(objects1, objects2)
+  const { dark } = useUserContext()
   return (
-    <>
+    <div className={dark ? 'dark bg-[#181818] h-screen' : 'bg-white h-screen'}>
       <Navbar page='cronologia' />
       <h2 className='text-center my-7 uppercase font-bold text-3xl px-5 text-gray-800 dark:text-inherit'>
         Cronología
@@ -78,6 +79,6 @@ export default function Cronologia({ objects1, objects2 }) {
           </table>
         </div>
       </main>
-    </>
+    </div>
   )
 }

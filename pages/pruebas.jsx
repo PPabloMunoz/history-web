@@ -3,15 +3,13 @@ import { PrismaClient } from '@prisma/client'
 import { useState, useEffect } from 'react'
 import { Reorder } from 'framer-motion'
 import Navbar from '../components/Navbar'
+import { useUserContext } from '../context/userContext'
 
 const prisma = new PrismaClient()
 
 export async function getStaticProps() {
   const objects1 = await prisma.firstBlock.findMany()
   const objects2 = await prisma.secondBlock.findMany()
-
-  // console.log(objects1)
-  // console.log(objects2)
 
   for (let i = 0; i < objects1.length; i++) {
     objects1[i] = objects1[i].name
@@ -20,8 +18,6 @@ export async function getStaticProps() {
   for (let i = 0; i < objects2.length; i++) {
     objects2[i] = objects2[i].name
   }
-
-  // console.log(objects2)
 
   return {
     props: { objects1, objects2 }
@@ -48,13 +44,11 @@ function aleatory(data, iterations) {
     })
   }
 
-  // console.log(random, 'random')
-  // console.log(temp, 'temp')
-
   return random
 }
 
 export default function Pruebas({ objects1, objects2 }) {
+  const { dark } = useUserContext()
   const [firstBlock, updateFirst] = useState([])
   const [secondBlock, updateSecond] = useState([])
   const [num, updateNum] = useState(7)
@@ -68,7 +62,7 @@ export default function Pruebas({ objects1, objects2 }) {
   console.log(secondBlock, 's')
 
   return (
-    <>
+    <div className={dark ? 'dark bg-[#181818] h-screen' : 'bg-white h-screen'}>
       <Navbar page='pruebas' />
       <h2 className='text-center my-7 uppercase font-bold text-3xl px-5 text-gray-900 dark:text-inherit'>
         Pruebas
@@ -79,7 +73,7 @@ export default function Pruebas({ objects1, objects2 }) {
         <p>Numero de palabras: {num}</p>
         <input
           type='range'
-          min='0'
+          min='3'
           max={objects1.length}
           defaultValue='7'
           className='range range-xs lg:range-sm my-3'
@@ -150,6 +144,6 @@ export default function Pruebas({ objects1, objects2 }) {
           </div>
         </div>
       </main>
-    </>
+    </div>
   )
 }

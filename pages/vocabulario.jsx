@@ -1,6 +1,7 @@
 import { PrismaClient } from '@prisma/client'
 import { useState } from 'react'
 import Navbar from '../components/Navbar'
+import { useUserContext } from '../context/userContext'
 
 const prisma = new PrismaClient()
 
@@ -14,11 +15,12 @@ export async function getStaticProps() {
 }
 
 export default function Vocabulario({ objects1, objects2 }) {
+  const { dark } = useUserContext()
   const [query, updateQuery] = useState('')
   const [query2, updateQuery2] = useState('')
 
   return (
-    <>
+    <div className={dark ? 'dark bg-[#181818]' : 'bg-white'}>
       <Navbar page='vocabulario' />
       <h2 className='text-center my-7 uppercase font-bold text-3xl px-5 text-gray-800 dark:text-inherit'>
         Vocabulario
@@ -80,6 +82,6 @@ export default function Vocabulario({ objects1, objects2 }) {
           </ul>
         </div>
       </main>
-    </>
+    </div>
   )
 }
