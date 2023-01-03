@@ -1,11 +1,9 @@
 import Image from 'next/image'
-
-import Navbar from './components/Navbar'
-
-import prueba from './assets/prueba.jpg'
-import vocabulario from './assets/vocabulario.jpg'
-import crono from './assets/cronologia.jpg'
 import Link from 'next/link'
+
+import Navbar from '../components/Navbar'
+
+import { cronologia, prueba, vocabulario } from './assets'
 
 export default function Home({ objects1 }) {
   return (
@@ -42,7 +40,7 @@ export default function Home({ objects1 }) {
           <div className='card bg-base-100 shadow-2xl bg-transparent'>
             <figure>
               <Image
-                src={crono}
+                src={cronologia}
                 alt='Shoes'
                 className='h-80 object-cover'
                 width={1000}

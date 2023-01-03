@@ -2,7 +2,7 @@ import { PrismaClient } from '@prisma/client'
 
 import { useState, useEffect } from 'react'
 import { Reorder } from 'framer-motion'
-import Navbar from './components/Navbar'
+import Navbar from '../components/Navbar'
 
 const prisma = new PrismaClient()
 

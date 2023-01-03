@@ -1,6 +1,6 @@
 import { PrismaClient } from '@prisma/client'
 import { useState } from 'react'
-import Navbar from './components/Navbar'
+import Navbar from '../components/Navbar'
 
 const prisma = new PrismaClient()
 
