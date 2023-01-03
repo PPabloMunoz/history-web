@@ -37,11 +37,13 @@
   },
   "eslintConfig": {
     "extends": [
+      "./node_modules/standard/eslintrc.json",
       "next/core-web-vitals"
     ],
     "rules": {
       "space-before-function-paren": "off",
-      "camelcase": "off"
+      "camelcase": "off",
+      "multiline-ternary": "off"
     }
   }
 }
